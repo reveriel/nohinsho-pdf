@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>納品書 PDF 生成ツール｜無料・登録不要・ブラウザだけで作成</title>
+<meta name="description" content="フリーランス・個人事業主・小規模事業者向けの納品書（納品書兼請求書ではありません）を無料で作成し、PDF として保存・印刷できるツールです。発行日・納品日・納品書番号・納品先・納品元・明細（品名・数量・単位・単価・金額）・小計・消費税（10% / 8%）・備考を入力するだけで、A4 の納品書がブラウザ内で完成します。登録不要、外部送信なし。">
+<meta name="keywords" content="納品書,納品書 テンプレート,納品書 無料,納品書 PDF,納品書 書き方,個人事業主,フリーランス,納品書 フォーマット">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="./index.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="納品書 PDF 生成ツール｜無料・登録不要">
+<meta property="og:description" content="納品日・納品書番号・明細（数量・単位・単価）・消費税まで対応した納品書を無料で作成し、PDF 保存できます。ブラウザ内で完結。">
+<meta property="og:locale" content="ja_JP">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231e3a8a'/%3E%3Cpath d='M9 8h10l5 5v11a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2V10a2 2 0 0 1 2-2z' fill='%23ffffff'/%3E%3Cpath d='M19 8v5h5' fill='%23c7d2fe'/%3E%3Cg stroke='%231e3a8a' stroke-width='1.6' stroke-linecap='round'%3E%3Cpath d='M12 13h4M11 17h10M11 20h10M11 23h6'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "6fc01bf3ac5e457ba1bd16b91e5b653e"}'></script><!-- End Cloudflare Web Analytics -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "納品書 PDF 生成ツール",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "description": "フリーランス・個人事業主・小規模事業者向けの納品書をブラウザ上で作成し、A4 の PDF として保存・印刷できる無料ツールです。",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "JPY" },
+      "featureList": [
+        "発行日・納品日・納品書番号の記載",
+        "納品先（会社名・担当者・住所）と納品元（自社）の記載",
+        "明細行の追加・削除と自動計算（品名・数量・単位・単価・金額）",
+        "消費税率 10% / 8%（軽減税率）の切り替え",
+        "A4 縦の印刷・PDF 保存",
+        "入力内容はブラウザ内のみで処理"
+      ],
+      "inLanguage": "ja"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "納品書に消費税や合計金額は必要ですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "法令上の義務ではありませんが、納品した品目と数量、金額の内訳（小計・消費税・合計）を記載しておくと、取引先の検収や経理処理がスムーズになります。本ツールでは小計・消費税・合計を自動計算して記載します。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "納品書と請求書は同じものですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "いいえ、別の書類です。納品書は「品物を納品しました」という事実を証明する書類で、請求書は「代金をお支払いください」という支払いの請求書です。納品書だけでは代金を請求できないため、本ツールの納品書には「請求書ではありません」という注記を入れています。実際のご請求は別途請求書を発行してください。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "納品日と発行日は分けたほうがよいですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "納品書は「いつ納品したか」を示す書類のため、実際に納品した日（納品日）を記載するのが一般的です。書類を作成・発行した日（発行日）と異なる場合は、本ツールのように2つの日付を分けて記載すると明確です。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "消費税の端数処理はどうなっていますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "小計（税抜）に対して消費税を計算し、1円未満を切り捨てています。これは一般的な処理方法のひとつです。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "入力した内容はサーバーに送信されますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "いいえ。入力内容はサーバーへ送信されず、お使いの端末のブラウザ内だけで処理されます。ページを閉じると内容は破棄されます。"
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="site-header no-print">
+  <div class="wrap header-inner">
+    <div class="brand">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
+        <rect width="32" height="32" rx="7" fill="currentColor"/>
+        <path d="M9 8h10l5 5v11a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2V10a2 2 0 0 1 2-2z" fill="#fff"/>
+        <path d="M19 8v5h5" fill="#c7d2fe"/>
+        <g stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+          <path d="M12 13h4M11 17h10M11 20h10M11 23h6"/>
+        </g>
+      </svg>
+      <div class="brand-text">
+        <strong>納品書 作成ツール</strong>
+        <span>無料・登録不要・ブラウザ内で完結</span>
+      </div>
+    </div>
+
+    <div class="header-actions">
+      <button type="button" class="btn btn-primary" id="printBtn">
+        <svg viewBox="0 0 20 20" aria-hidden="true" class="ic">
+          <path d="M6 7V3h8v4M6 15H4.5A1.5 1.5 0 0 1 3 13.5v-4A1.5 1.5 0 0 1 4.5 8h11A1.5 1.5 0 0 1 17 9.5v4a1.5 1.5 0 0 1-1.5 1.5H14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <rect x="6" y="12" width="8" height="6" rx="1" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        </svg>
+        印刷 / PDF保存
+      </button>
+      <button type="button" class="btn btn-ghost" id="resetBtn">リセット</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap layout">
+
+  <!-- ============ 入力フォーム ============ -->
+  <section class="pane form-pane no-print" aria-label="入力フォーム">
+    <div class="pane-head">
+      <h2>納品書の内容を入力</h2>
+      <p class="hint">入力すると右のプレビューにすぐ反映されます。最初からサンプルデータが入っています。</p>
+    </div>
+
+    <form id="deliveryForm" autocomplete="off" novalidate>
+
+      <datalist id="unitOptions">
+        <option value="個"></option>
+        <option value="本"></option>
+        <option value="枚"></option>
+        <option value="箱"></option>
+        <option value="台"></option>
+        <option value="式"></option>
+        <option value="セット"></option>
+        <option value="袋"></option>
+        <option value="kg"></option>
+        <option value="m"></option>
+        <option value="時間"></option>
+        <option value="日"></option>
+      </datalist>
+
+      <fieldset class="card">
+        <legend>納品元（自社）の情報</legend>
+
+        <div class="field">
+          <label for="issuerName">自社名・屋号・氏名<span class="req">必須</span></label>
+          <input type="text" id="issuerName" name="issuerName" placeholder="例：山田 太郎 / Yamada Design">
+        </div>
+
+        <div class="field">
+          <label for="issuerAddress">住所</label>
+          <textarea id="issuerAddress" name="issuerAddress" rows="2" placeholder="例：〒150-0001 東京都渋谷区神宮前1-2-3 サンプルビル5F"></textarea>
+        </div>
+
+        <div class="grid-2">
+          <div class="field">
+            <label for="issuerPhone">電話番号</label>
+            <input type="text" id="issuerPhone" name="issuerPhone" inputmode="tel" placeholder="例：090-1234-5678">
+          </div>
+          <div class="field">
+            <label for="issuerEmail">メールアドレス</label>
+            <input type="text" id="issuerEmail" name="issuerEmail" inputmode="email" spellcheck="false" placeholder="例：info@example.com">
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="card">
+        <legend>納品先（お客様）の情報</legend>
+
+        <div class="field">
+          <label for="clientName">納品先名（会社名・氏名）<span class="req">必須</span></label>
+          <input type="text" id="clientName" name="clientName" placeholder="例：株式会社サンプル">
+        </div>
+
+        <div class="grid-2">
+          <div class="field">
+            <label for="clientHonorific">敬称</label>
+            <select id="clientHonorific" name="clientHonorific">
+              <option value="御中" selected>御中</option>
+              <option value="様">様</option>
+              <option value="">（付けない）</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="clientContact">ご担当者名（任意）</label>
+            <input type="text" id="clientContact" name="clientContact" placeholder="例：田中">
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="clientAddress">納品先住所（任意）</label>
+          <textarea id="clientAddress" name="clientAddress" rows="2" placeholder="例：〒150-0002 東京都渋谷区渋谷2-3-4 サンプルビル8F"></textarea>
+        </div>
+      </fieldset>
+
+      <fieldset class="card">
+        <legend>納品書の情報</legend>
+
+        <div class="grid-2">
+          <div class="field">
+            <label for="issueDate">発行日<span class="req">必須</span></label>
+            <input type="date" id="issueDate" name="issueDate">
+          </div>
+          <div class="field">
+            <label for="deliveryDate">納品日</label>
+            <input type="date" id="deliveryDate" name="deliveryDate">
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="docNo">納品書番号</label>
+          <input type="text" id="docNo" name="docNo" spellcheck="false" placeholder="例：NOH-2026-001">
+        </div>
+        <p class="help">納品日は実際に品物を納品した日を入力します。発行日と異なる場合は分けて記載しておくと明確です。</p>
+      </fieldset>
+
+      <fieldset class="card">
+        <legend>明細行</legend>
+
+        <div class="rows-head" aria-hidden="true">
+          <span class="c-name">品名・品目</span>
+          <span class="c-qty">数量</span>
+          <span class="c-unit">単位</span>
+          <span class="c-price">単価</span>
+          <span class="c-del"></span>
+        </div>
+
+        <div id="rowsContainer" class="rows"></div>
+
+        <div class="rows-actions">
+          <button type="button" class="btn btn-outline btn-sm" id="addRowBtn">
+            <svg viewBox="0 0 16 16" aria-hidden="true" class="ic"><path d="M8 3v10M3 8h10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            明細行を追加
+          </button>
+          <p class="hint">単価は<strong>税抜金額</strong>で入力してください。単位は「個」「式」などを自由に入力できます。</p>
+        </div>
+      </fieldset>
+
+      <fieldset class="card">
+        <legend>消費税</legend>
+
+        <div class="field">
+          <label for="taxRate">消費税率</label>
+          <select id="taxRate" name="taxRate">
+            <option value="10" selected>10%（標準税率）</option>
+            <option value="8">8%（軽減税率）</option>
+          </select>
+        </div>
+        <p class="help">納品全体に適用する税率です。軽減税率の対象となる取引では 8% を選択してください。</p>
+      </fieldset>
+
+      <fieldset class="card">
+        <legend>備考・納品条件</legend>
+
+        <div class="field">
+          <label for="notes">備考・特記事項</label>
+          <textarea id="notes" name="notes" rows="4" placeholder="例：納品場所：貴社 1F 受付&#10;検収期限：納品日より7日以内"></textarea>
+        </div>
+      </fieldset>
+
+      <p class="privacy-note">
+        <svg viewBox="0 0 16 16" aria-hidden="true" class="ic"><path d="M8 1.5 3 3.5v4c0 3 2.1 5.6 5 6.5 2.9-.9 5-3.5 5-6.5v-4L8 1.5z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+        入力した内容はサーバーに送信されません。すべてお使いのブラウザ内だけで処理されます。
+      </p>
+    </form>
+  </section>
+
+  <!-- ============ プレビュー / 印刷対象 ============ -->
+  <section class="pane preview-pane" aria-label="プレビュー">
+    <div class="preview-bar no-print">
+      <span class="dot"></span> プレビュー（A4）
+    </div>
+
+    <div class="paper-wrap">
+      <article class="paper" id="paper">
+        <h1 class="doc-title">納品書</h1>
+
+        <header class="doc-head">
+          <div class="doc-head-left">
+            <p class="doc-to">
+              <span class="client-name" id="pvClientName">株式会社サンプル</span><span class="honorific" id="pvHonorific">御中</span>
+            </p>
+            <p class="doc-contact" id="pvContactLine" hidden>ご担当：<span id="pvContact"></span> 様</p>
+            <p class="doc-address" id="pvClientAddress" hidden></p>
+            <p class="doc-meta-line">
+              <span class="meta-label">発行日</span>
+              <span id="pvDate"></span>
+            </p>
+            <p class="doc-meta-line" id="pvDeliveryLine" hidden>
+              <span class="meta-label">納品日</span>
+              <span id="pvDelivery"></span>
+            </p>
+            <p class="doc-meta-line" id="pvNoLine" hidden>
+              <span class="meta-label">納品書番号</span>
+              <span id="pvNo"></span>
+            </p>
+          </div>
+
+          <div class="doc-head-right">
+            <p class="issuer-name" id="pvIssuerName">山田 太郎</p>
+            <p class="issuer-meta" id="pvIssuerAddress" hidden></p>
+            <p class="issuer-meta" id="pvIssuerPhone" hidden></p>
+            <p class="issuer-meta" id="pvIssuerEmail" hidden></p>
+          </div>
+        </header>
+
+        <div class="total-banner">
+          <span class="total-label">納品金額（税込）</span>
+          <span class="total-value" id="pvTotal">¥0</span>
+        </div>
+
+        <table class="items-table">
+          <thead>
+            <tr>
+              <th class="th-name">品名・品目</th>
+              <th class="th-qty">数量</th>
+              <th class="th-unit">単位</th>
+              <th class="th-price">単価</th>
+              <th class="th-amount">金額</th>
+            </tr>
+          </thead>
+          <tbody id="pvItems"></tbody>
+        </table>
+
+        <div class="summary">
+          <div class="summary-note">
+            <p class="summary-lead">上記のとおり納品いたしました。<br>ご確認のほど、よろしくお願い申し上げます。</p>
+          </div>
+
+          <div class="summary-totals">
+            <div class="sum-row">
+              <span>小計（税抜）</span>
+              <span class="num" id="pvSubtotal">¥0</span>
+            </div>
+            <div class="sum-row">
+              <span id="pvTaxLabel">消費税（10%）</span>
+              <span class="num" id="pvTaxTotal">¥0</span>
+            </div>
+            <div class="sum-row sum-grand">
+              <span>合計</span>
+              <span class="num" id="pvGrand">¥0</span>
+            </div>
+          </div>
+        </div>
+
+        <footer class="doc-foot">
+          <div class="foot-block" id="pvNotesBlock" hidden>
+            <h2 class="foot-title">備考・納品条件</h2>
+            <p class="foot-body" id="pvNotes"></p>
+          </div>
+        </footer>
+
+        <p class="paper-footnote" id="pvPaperNote" hidden></p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ SEO 説明文 ============ -->
+  <section class="seo no-print" aria-label="ツールについて">
+    <h2>納品書 PDF 生成ツールとは</h2>
+    <p>
+      フリーランス・個人事業主・小規模事業者が取引先へ提出する<strong>納品書</strong>を、ブラウザ上でかんたんに作成できる無料ツールです。
+      自社名・屋号・住所・電話・メールアドレスといった納品元の情報、納品先（会社名・ご担当者・住所）、発行日、<strong>納品日</strong>、納品書番号、
+      明細行（品名・数量・<strong>単位</strong>・単価・金額）、消費税、備考を入力するだけで、A4 サイズの納品書がそのまま完成します。
+      作成した納品書は「印刷 / PDF保存」ボタンから PDF として保存でき、メール添付やチャットでの送付に使えます。
+    </p>
+    <p>
+      入力内容はサーバーへ送信されず、すべてお使いの端末のブラウザ内だけで処理されます。会計ソフトや販売管理システムを契約するほどではない、
+      という場面に向いています。登録もインストールも不要です。
+    </p>
+
+    <h3>納品書に載せておきたい項目</h3>
+    <ol class="seo-list">
+      <li><strong>表題「納品書」</strong> — 請求書や見積書と取り違えられないよう、書類の種類を明記します。</li>
+      <li><strong>納品先（会社名・ご担当者・住所）と敬称</strong> — 法人なら「御中」、個人なら「様」が一般的です。担当者名を添えると検収がスムーズです。</li>
+      <li><strong>納品書番号</strong> — 番号を振っておくと、後の請求書や注文書との突き合わせが楽になります。</li>
+      <li><strong>発行日と納品日</strong> — 納品書は「いつ納品したか」を示す書類のため、実際の納品日を記載します。作成日と異なる場合は分けて記載します。</li>
+      <li><strong>明細（品名・数量・単位・単価・金額）</strong> — 何をいくつ納品したのかを、単位（個・式など）も含めて具体的に示します。</li>
+      <li><strong>小計・消費税・合計</strong> — 税抜金額と税込金額を分けて記載します。</li>
+      <li><strong>納品元の情報</strong> — 屋号・氏名、住所、電話番号、メールアドレスなどの連絡先を記載します。</li>
+      <li><strong>備考・納品条件</strong> — 納品場所、納品方法、検収期限などを明記します。</li>
+    </ol>
+
+    <h3>納品書と請求書の違い</h3>
+    <p>
+      納品書は「この品物をこの数量で納品しました」という<strong>納品の事実を証明する書類</strong>であり、請求書は「発生した代金をお支払いください」という
+      <strong>支払いの請求</strong>です。納品書だけでは代金を請求できないため、実際に請求する段階では別途 請求書（適格請求書）を発行する必要があります。
+      本ツールの納品書には、その旨と「請求書ではありません」という注記があらかじめ入っています。
+    </p>
+
+    <h3>使い方</h3>
+    <ol class="seo-list">
+      <li>左側のフォームに納品元（自社）の情報を入力します。</li>
+      <li>納品先（会社名・敬称・ご担当者・住所）を入力します。</li>
+      <li>発行日・納品日・納品書番号を入力します。</li>
+      <li>明細行（品名・数量・単位・単価）を入力します。行の追加・削除は自由にできます。「＋ 明細行を追加」ボタンで行を増やせます。</li>
+      <li>消費税率（10% / 8%）と備考を入力すると、右のプレビューと合計金額が自動で更新されます。</li>
+      <li>「印刷 / PDF保存」ボタンを押し、印刷先で「PDF に保存」を選ぶと PDF ファイルとして保存できます。</li>
+    </ol>
+
+    <h3>よくある質問</h3>
+    <dl class="faq">
+      <dt>納品書に消費税や合計金額は必要ですか？</dt>
+      <dd>法令上の義務ではありませんが、納品した品目と数量、金額の内訳（小計・消費税・合計）を記載しておくと、取引先の検収や経理処理がスムーズになります。本ツールでは小計・消費税・合計を自動計算して記載します。</dd>
+
+      <dt>納品書と請求書は同じものですか？</dt>
+      <dd>いいえ、別の書類です。納品書は「品物を納品しました」という事実を証明する書類で、請求書は代金の支払いを請求する書類です。納品書だけでは代金を請求できないため、本ツールの納品書には「請求書ではありません」という注記を入れています。実際のご請求は別途請求書を発行してください。</dd>
+
+      <dt>納品日と発行日は分けたほうがよいですか？</dt>
+      <dd>納品書は「いつ納品したか」を示す書類のため、実際に納品した日（納品日）を記載するのが一般的です。作成・発行した日と異なる場合は、本ツールのように2つの日付を分けて記載すると明確です。</dd>
+
+      <dt>消費税の端数処理はどうなっていますか？</dt>
+      <dd>小計（税抜）に対して消費税を計算し、1円未満を切り捨てています。これは一般的な処理方法のひとつです。</dd>
+
+      <dt>入力したデータはどこかに保存されますか？</dt>
+      <dd>いいえ。入力内容はサーバーへ送信されず、お使いの端末のブラウザ内だけで処理されます。ページを閉じると内容は破棄されます。</dd>
+
+      <dt>作成した納品書はそのまま送れますか？</dt>
+      <dd>「印刷 / PDF保存」から PDF として保存できます。金額や数量の最終確認はご自身で行ってください。</dd>
+    </dl>
+
+    <p class="disclaimer">
+      ※ 本ツールは納品書作成の補助を目的としたものであり、法令や商慣習への適合を保証するものではありません。記載内容の最終確認はご自身で、または税理士などの専門家にご相談ください。
+    </p>
+  </section>
+</main>
+
+<footer class="site-footer no-print">
+  <div class="wrap">
+    <p>納品書 作成ツール — ブラウザだけで動く無料の納品書ジェネレーター</p>
+    <p><a href="https://docs.google.com/forms/d/e/1FAIpQLSfHGUfgAlViT3TFiVtJi_EpJ4ioUpd9oGyaJ7rehEV-gBH_PA/viewform?usp=pp_url&amp;entry.1745177199=%E7%B4%8D%E5%93%81%E6%9B%B8" target="_blank" rel="noopener">ご意見・フィードバック</a></p>
+    <p style="margin-top:8px;font-size:12.5px;opacity:.75;">関連ツール：<a href="https://www.reveriel.com/japan-invoice-pdf/">適格請求書</a> ・ <a href="https://www.reveriel.com/mitsumori-pdf/">見積書</a> ・ <a href="https://www.reveriel.com/ryoshusho-pdf/">領収書</a></p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
