@@ -136,6 +136,9 @@
 .guide-related a:hover { text-decoration: underline; }
 .guide-related .rel-desc { display: block; margin-top: 2px; font-size: 12.5px; font-weight: 400; color: var(--c-text-faint, #8592a8); }
 
+/* トップページの「あわせて読みたい」枠 */
+.seo-guide { padding-block: 4px; }
+
 /* =========================================================
    運営者情報 / プライバシーポリシー（法務ページ）
    ========================================================= */

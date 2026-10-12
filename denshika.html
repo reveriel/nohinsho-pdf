@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>納品書の電子化・電子帳簿保存法への対応｜電子取引・タイムスタンプ・スキャナ保存</title>
+<meta name="description" content="納品書の電子化と電子帳簿保存法の対応を解説。電子取引データの保存義務、タイムスタンプと訂正削除履歴、スキャナ保存の要件、PDFで受け取った納品書の保存方法までをまとめました。">
+<meta name="keywords" content="納品書 電子化,電子帳簿保存法 納品書,電子取引 保存,タイムスタンプ 納品書,スキャナ保存 要件,納品書 PDF 保存">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.reveriel.com/nohinsho-pdf/denshika.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="納品書の電子化・電子帳簿保存法への対応｜電子取引・タイムスタンプ・スキャナ保存">
+<meta property="og:description" content="納品書の電子化と電子帳簿保存法の対応を解説。電子取引データの保存義務、タイムスタンプ、スキャナ保存の要件をまとめました。">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:url" content="https://www.reveriel.com/nohinsho-pdf/denshika.html">
+<meta property="og:image" content="https://www.reveriel.com/nohinsho-pdf/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://www.reveriel.com/nohinsho-pdf/og-image.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231e3a8a'/%3E%3Cpath d='M9 8h10l5 5v11a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2V10a2 2 0 0 1 2-2z' fill='%23ffffff'/%3E%3Cpath d='M19 8v5h5' fill='%23c7d2fe'/%3E%3Cg stroke='%231e3a8a' stroke-width='1.6' stroke-linecap='round'%3E%3Cpath d='M12 13h4M11 17h10M11 20h10M11 23h6'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="guide.css">
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "6fc01bf3ac5e457ba1bd16b91e5b653e"}'></script><!-- End Cloudflare Web Analytics -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "納品書の電子化・電子帳簿保存法への対応｜電子取引・タイムスタンプ・スキャナ保存",
+      "description": "納品書の電子化と電子帳簿保存法の対応を解説。電子取引データの保存義務、タイムスタンプと訂正削除履歴、スキャナ保存の要件、PDFで受け取った納品書の保存方法をまとめました。",
+      "inLanguage": "ja",
+      "datePublished": "2026-10-12",
+      "dateModified": "2026-10-12",
+      "author": { "@type": "Organization", "name": "Reveriel" },
+      "publisher": { "@type": "Organization", "name": "Reveriel" },
+      "mainEntityOfPage": { "@type": "WebPage", "@id": "https://www.reveriel.com/nohinsho-pdf/denshika.html" },
+      "image": "https://www.reveriel.com/nohinsho-pdf/og-image.png"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "メールに添付された納品書のPDFは保存が必要ですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "はい。PDFなどの電子データで授受した納品書は「電子取引」に該当し、電子帳簿保存法に基づいてその電子データのまま保存する義務があります。紙に印刷して保存するだけでは要件を満たさないため、受信したデータを検索できる形で保存しておく必要があります。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "納品書を電子化するにはタイムスタンプが必須ですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "電子取引データを保存する場合、真実性を確保する方法として、タイムスタンプの付与、訂正・削除の履歴が残るシステムでの授受、または訂正・削除を行うことができないシステムでの授受のいずれかが必要です。タイムスタンプはその代表的な方法ですが、必ずしもすべてのケースで必須というわけではありません。要件の判断は国税庁の案内や税理士に確認してください。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "紙の納品書をスキャンして保存してもよいですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "紙で受け取った納品書をスキャナで読み取って電子保存する場合は「スキャナ保存」の要件を満たす必要があります。解像度や階調といった読み取り条件、保存期間、入力期限などの要件が定められています。要件を満たさないままスキャンしたデータだけを保存すると、証憑として認められないおそれがあるため注意が必要です。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "電子帳簿保存法はいつから義務化されましたか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "電子取引データの保存は、2022年1月の改正電子帳簿保存法の施行により原則として義務化され、その後2024年1月から宥恕措置が終了して本格的に適用されています。電子データで受け取った納品書は、電子データのまま保存する必要があります。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "自分のツールで作った納品書をPDF保存するだけでも電子化になりますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "納品書をPDFで作成・保存すること自体は電子化の第一歩ですが、電子帳簿保存法への対応は「受け取った側・発行した側がそのデータをどう保存するか」で判断されます。自社で発行する納品書は、必要に応じて保存要件を満たす運用と組み合わせてください。本ツールはブラウザ内でPDFを作成するもので、入力内容をサーバーに保存しません。"
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="site-header no-print">
+  <div class="wrap header-inner">
+    <a class="brand" href="https://www.reveriel.com/nohinsho-pdf/" style="text-decoration:none;color:inherit;">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
+        <rect width="32" height="32" rx="7" fill="currentColor"/>
+        <path d="M9 8h10l5 5v11a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2V10a2 2 0 0 1 2-2z" fill="#fff"/>
+        <path d="M19 8v5h5" fill="#c7d2fe"/>
+        <g stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+          <path d="M12 13h4M11 17h10M11 20h10M11 23h6"/>
+        </g>
+      </svg>
+      <div class="brand-text">
+        <strong>納品書 作成ツール</strong>
+        <span>書き方ガイド</span>
+      </div>
+    </a>
+    <div class="header-actions">
+      <a class="btn btn-primary" href="https://www.reveriel.com/nohinsho-pdf/">今すぐ無料で作成する</a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="guide-col">
+
+    <nav class="breadcrumb no-print" aria-label="パンくず">
+      <ol>
+        <li><a href="https://www.reveriel.com/nohinsho-pdf/">納品書 PDF 生成ツール</a></li>
+        <li><a href="kakikata.html">書き方ガイド</a></li>
+        <li aria-current="page">納品書の電子化・電子帳簿保存法への対応</li>
+      </ol>
+    </nav>
+
+    <article class="guide">
+      <h1>納品書の電子化・電子帳簿保存法への対応</h1>
+      <p class="guide-meta">更新日：2026年10月12日</p>
+      <p class="guide-lead">
+        納品書をPDFでやり取りする機会が増え、「<strong>受け取った納品書のPDFをどう保存すればよいのか</strong>」
+        「<strong>紙の納品書をスキャンするだけでよいのか</strong>」と迷う方は少なくありません。
+        電子データで授受した書類の保存は、<strong>電子帳簿保存法</strong>のルールに従う必要があります。
+        この記事では、電子取引データの保存義務、タイムスタンプと訂正削除履歴、スキャナ保存の要件、
+        そして納品書を電子化するときの実務のポイントをまとめて解説します。
+      </p>
+
+      <div class="guide-cta-box">
+        <p><strong>納品書をPDFで作成して、電子化の第一歩を。</strong>入力するだけでA4の納品書が完成し、そのままPDF保存できます。ブラウザ内で完結、登録不要です。</p>
+        <a class="btn btn-primary" href="https://www.reveriel.com/nohinsho-pdf/">今すぐ無料で作成する</a>
+      </div>
+
+      <h2>電子帳簿保存法とは？納品書との関係</h2>
+      <p>
+        電子帳簿保存法は、<strong>帳簿や書類を電子データで保存するためのルールを定めた法律</strong>です。
+        パソコンで作った帳簿や、メールで受け取った請求書・納品書などの電子データについて、
+        一定の要件を満たせば電子データのまま保存できるようにする一方、満たさない場合は証憑として認められないおそれがあります。
+      </p>
+      <p>
+        納品書は、品物を納品した事実を裏づける<strong>証憑（しょうひょう）</strong>です。
+        紙で受け取った場合と電子データで受け取った場合とで、求められる保存のルールが異なります。
+        まずは「自分の納品書は紙か、電子データか」を分けて考えるのが出発点です。
+      </p>
+
+      <h2>電子帳簿保存法の3つの保存区分</h2>
+      <p>
+        電子帳簿保存法による保存は、大きく<strong>3つの区分</strong>に分かれます。
+        納品書に関係が深いのは、2つ目の「電子取引データ保存」と3つ目の「スキャナ保存」です。
+      </p>
+      <table class="guide-table">
+        <thead>
+          <tr><th>区分</th><th>対象</th><th>要点</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>電子帳簿等保存</td>
+            <td>自分で会計ソフト等で作成した帳簿・書類</td>
+            <td>優良な電子帳簿の場合は過少申告加算税の軽減措置がある</td>
+          </tr>
+          <tr>
+            <td>電子取引データ保存</td>
+            <td>メール添付のPDFなど、電子データで授受した書類</td>
+            <td>電子データのまま保存する義務がある（2024年1月から本格適用）</td>
+          </tr>
+          <tr>
+            <td>スキャナ保存</td>
+            <td>紙で受け取った書類をスキャンしたデータ</td>
+            <td>解像度・タイムスタンプなどの要件を満たす必要がある</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="guide-note">
+        本記事は一般的な内容をまとめたものです。実際の要件や適用範囲は、国税庁の案内や
+        税理士などの専門家に確認してください。本ツールは法令適合を保証するものではありません。
+      </div>
+
+      <h2>電子取引データの保存義務</h2>
+      <p>
+        メールに添付された納品書のPDF、クラウド上で共有された請求書など、
+        <strong>電子データで受け取った書類は「電子取引」に該当</strong>し、その電子データのまま保存する義務があります。
+        紙に印刷して綴じるだけでは、この義務を満たしたことにはなりません。
+      </p>
+      <p>
+        この保存義務は、2022年1月の改正法施行で原則として義務化され、
+        2024年1月からは宥恕措置（猶予）が終了して本格的に適用されています。
+        電子データで納品書を受け取っている事業者は、対応が必須と考えておきましょう。
+      </p>
+
+      <h3>真実性の確保（改ざんを防ぐ）</h3>
+      <p>
+        電子取引データの保存では、データが<strong>後から改ざんされていないこと（真実性）</strong>を確保する必要があります。
+        その方法として、次のいずれかが求められます。
+      </p>
+      <ul>
+        <li><strong>タイムスタンプ</strong> — 電子データに「その時点で存在していた」証明を付与します。</li>
+        <li><strong>訂正・削除の履歴が残るシステム</strong>で授受する — やり取りしたシステム側で履歴を管理します。</li>
+        <li><strong>訂正・削除ができないシステム</strong>で授受する — そもそも書き換えられない仕組みで受け取ります。</li>
+      </ul>
+      <p>
+        <strong>タイムスタンプは真実性を確保する代表的な方法</strong>ですが、
+        すべてのケースで必ずしも必須というわけではありません。
+        どの方法を採るかは、取引の規模や利用しているシステムに応じて判断します。
+      </p>
+
+      <h3>可視性の確保（検索できるようにする）</h3>
+      <p>
+        保存したデータは、税務調査などの際に<strong>すぐに取り出せて、内容を確認できる状態</strong>にしておく必要があります。
+        具体的には、取引年月日・取引金額・取引先などの項目で検索できるようにするか、
+        帳簿に記載された日付や金額で並べ替え・検索できるようにしておきます。
+      </p>
+      <p>
+        ファイル名を「2026-10-12_株式会社〇〇_納品書_NOH-2026-001.pdf」のように
+        <strong>日付・取引先・書類名・番号が一目で分かる形</strong>にしておくと、
+        検索要件への対応と日々の探しやすさを同時に満たせます。
+      </p>
+
+      <div class="guide-cta-box">
+        <p><strong>納品書番号を振っておくと、電子データの整理がぐっと楽になります。</strong>番号・納品日・明細を入力して、揃った納品書をPDFで作れます。</p>
+        <a class="btn btn-primary" href="https://www.reveriel.com/nohinsho-pdf/">納品書を無料で作成する</a>
+      </div>
+
+      <h2>スキャナ保存とは？紙の納品書を電子化する場合</h2>
+      <p>
+        紙で受け取った納品書をスキャナで読み取り、電子データとして保存する場合は<strong>スキャナ保存</strong>の要件を満たす必要があります。
+        主に次のような点が定められています。
+      </p>
+      <ul>
+        <li><strong>解像度・階調</strong> — 読み取る際の解像度や、カラー・グレースケールといった条件を満たすこと。</li>
+        <li><strong>タイムスタンプ等</strong> — 電子取引データと同様に、真実性を確保する措置を講じること。</li>
+        <li><strong>入力期限</strong> — 紙の書類を受け取ってから、一定期間内に読み取ってデータ保存すること。</li>
+        <li><strong>検索要件</strong> — 取引年月日・金額・取引先で検索できるようにすること。</li>
+      </ul>
+      <p>
+        要件を満たさないままスキャンしたデータだけを保存し、紙の原本を廃棄してしまうと、
+        証憑として認められないおそれがあります。
+        <strong>要件を満たす自信がないうちは、紙の原本もあわせて保管しておく</strong>のが安全です。
+      </p>
+
+      <h2>納品書を電子化するメリットと注意点</h2>
+      <h3>メリット</h3>
+      <ul>
+        <li>書類の印刷・郵送・綴じ込みの手間が減り、取引のスピードが上がります。</li>
+        <li>取引先・日付・金額で検索でき、過去の納品書をすぐ取り出せます。</li>
+        <li>保管スペースを削減でき、リモート環境でも書類を確認できます。</li>
+      </ul>
+      <h3>注意点</h3>
+      <ul>
+        <li>電子データで受け取った納品書を印刷して紙だけで保存する運用は、電子取引データ保存の要件を満たしません。</li>
+        <li>真実性・可視性の要件を満たす必要があり、単にPDFをフォルダに置くだけでは不十分な場合があります。</li>
+        <li>取引先が押印した紙の納品書を求める場合は、無理に電子化せず、相手の運用に合わせることも大切です。</li>
+      </ul>
+      <p>
+        電子化は「紙をなくすこと」が目的ではなく、
+        <strong>証憑としての信頼性を保ったまま、探しやすく・扱いやすくすること</strong>が目的です。
+        要件と取引先の運用の両方を見ながら進めましょう。
+      </p>
+
+      <h2>納品書の電子化を始める手順</h2>
+      <ol>
+        <li>自社の納品書が「紙で受け取るもの」「電子データで受け取るもの」のどちらが多いか整理します。</li>
+        <li>電子データで受け取る納品書は、そのデータのまま保存する運用に切り替えます。</li>
+        <li>真実性を確保する方法（タイムスタンプ等）と、検索できる保存場所を決めます。</li>
+        <li>ファイル名のルール（日付・取引先・書類名・番号）を統一します。</li>
+        <li>紙の納品書をスキャンして保存する場合は、スキャナ保存の要件を満たす設定にします。</li>
+        <li>自社が発行する納品書は、PDFで作成し、控えを整理して保管します。</li>
+      </ol>
+      <p>
+        発行する側の納品書づくりは、当サイトの
+        <a href="https://www.reveriel.com/nohinsho-pdf/">納品書 PDF 生成ツール</a>でそのまま行えます。
+        納品書番号・納品日・明細・消費税を入力してPDF保存でき、入力内容はサーバーへ送信されずブラウザ内だけで処理されます。
+      </p>
+      <p>
+        納品書と請求書・受領書の関係や書き方は、<a href="kakikata.html">納品書の書き方ガイド</a>と
+        <a href="nohinsho-vs-juryosho.html">納品書と受領書の違い・使い分けガイド</a>で詳しく解説しています。
+      </p>
+
+      <section class="guide-faq" aria-labelledby="faqTitle">
+        <h2 id="faqTitle">よくある質問</h2>
+        <dl>
+          <dt>メールに添付された納品書のPDFは保存が必要ですか？</dt>
+          <dd>はい。PDFなどの電子データで授受した納品書は「電子取引」に該当し、電子帳簿保存法に基づいてその電子データのまま保存する義務があります。紙に印刷して保存するだけでは要件を満たさないため、受信したデータを検索できる形で保存しておく必要があります。</dd>
+
+          <dt>納品書を電子化するにはタイムスタンプが必須ですか？</dt>
+          <dd>電子取引データを保存する場合、真実性を確保する方法として、タイムスタンプの付与、訂正・削除の履歴が残るシステムでの授受、または訂正・削除を行うことができないシステムでの授受のいずれかが必要です。タイムスタンプはその代表的な方法ですが、必ずしもすべてのケースで必須というわけではありません。要件の判断は国税庁の案内や税理士に確認してください。</dd>
+
+          <dt>紙の納品書をスキャンして保存してもよいですか？</dt>
+          <dd>紙で受け取った納品書をスキャナで読み取って電子保存する場合は「スキャナ保存」の要件を満たす必要があります。解像度や階調といった読み取り条件、保存期間、入力期限などの要件が定められています。要件を満たさないままスキャンしたデータだけを保存すると、証憑として認められないおそれがあるため注意が必要です。</dd>
+
+          <dt>電子帳簿保存法はいつから義務化されましたか？</dt>
+          <dd>電子取引データの保存は、2022年1月の改正電子帳簿保存法の施行により原則として義務化され、その後2024年1月から宥恕措置が終了して本格的に適用されています。電子データで受け取った納品書は、電子データのまま保存する必要があります。</dd>
+
+          <dt>自分のツールで作った納品書をPDF保存するだけでも電子化になりますか？</dt>
+          <dd>納品書をPDFで作成・保存すること自体は電子化の第一歩ですが、電子帳簿保存法への対応は「受け取った側・発行した側がそのデータをどう保存するか」で判断されます。自社で発行する納品書は、必要に応じて保存要件を満たす運用と組み合わせてください。本ツールはブラウザ内でPDFを作成するもので、入力内容をサーバーに保存しません。</dd>
+        </dl>
+      </section>
+
+      <div class="guide-cta-foot">
+        <h2>納品書を無料で作成する</h2>
+        <p>発行日・納品日・単位・消費税まで対応。入力するだけで A4 の納品書が完成し、PDF として保存できます。登録不要・ブラウザ内で完結。</p>
+        <a class="btn btn-primary" href="https://www.reveriel.com/nohinsho-pdf/">今すぐ無料で作成する</a>
+      </div>
+    </article>
+
+    <section class="guide-related no-print" aria-labelledby="relTitle">
+      <h2 id="relTitle">あわせて読みたい</h2>
+      <ul>
+        <li><a href="nohinsho-vs-juryosho.html">納品書と受領書の違い・使い分けガイド<span class="rel-desc">発行側・受領側の立場、捺印、保管方法を解説</span></a></li>
+        <li><a href="kakikata.html">納品書の書き方・請求書との違いガイド<span class="rel-desc">項目の書き方、発行日と納品日の違い、単位の入れ方を解説</span></a></li>
+      </ul>
+    </section>
+
+    <section class="guide-related no-print" aria-labelledby="relToolTitle">
+      <h2 id="relToolTitle">あわせて使いたいツール</h2>
+      <ul>
+        <li><a href="https://www.reveriel.com/nohinsho-pdf/">納品書 PDF 生成ツール<span class="rel-desc">納品書を無料で作成し、PDF として保存する</span></a></li>
+        <li><a href="https://www.reveriel.com/japan-invoice-pdf/">適格請求書（インボイス）PDF 生成ツール<span class="rel-desc">納品書のあとの「請求」に。登録番号・税率区分に対応</span></a></li>
+        <li><a href="https://www.reveriel.com/ryoshusho-pdf/">領収書 PDF 生成ツール<span class="rel-desc">金銭を受け取った事実を証明する書類</span></a></li>
+        <li><a href="https://www.reveriel.com/chumonsho-pdf/">注文書 PDF 生成ツール<span class="rel-desc">発注内容を確定し、納品書と突き合わせる</span></a></li>
+      </ul>
+    </section>
+
+    <section class="guide-related no-print" aria-labelledby="siteInfoTitle">
+      <h2 id="siteInfoTitle">サイト情報</h2>
+      <ul>
+        <li><a href="privacy.html">プライバシーポリシー<span class="rel-desc">入力内容の取扱いと個人情報の管理方針</span></a></li>
+        <li><a href="company.html">運営者情報<span class="rel-desc">本ツールの運営者とお問い合わせ方法</span></a></li>
+      </ul>
+    </section>
+
+  </div>
+</main>
+
+<footer class="site-footer no-print">
+  <div class="wrap">
+    <p>納品書 作成ツール — ブラウザだけで動く無料の納品書ジェネレーター</p>
+    <p><a href="https://docs.google.com/forms/d/e/1FAIpQLSfHGUfgAlViT3TFiVtJi_EpJ4ioUpd9oGyaJ7rehEV-gBH_PA/viewform?usp=pp_url&amp;entry.1745177199=%E7%B4%8D%E5%93%81%E6%9B%B8" target="_blank" rel="noopener">ご意見・フィードバック</a></p>
+    <p style="margin-top:8px;font-size:12.5px;opacity:.75;">サイト情報：<a href="privacy.html">プライバシーポリシー</a> ・ <a href="company.html">運営者情報</a> ・ <a href="kakikata.html">納品書の書き方ガイド</a> ・ <a href="nohinsho-vs-juryosho.html">納品書と受領書の違い</a> ・ <a href="denshika.html">納品書の電子化</a></p>
+    <p style="margin-top:8px;font-size:12.5px;opacity:.75;">関連ツール：<a href="https://www.reveriel.com/japan-invoice-pdf/">適格請求書</a> ・ <a href="https://www.reveriel.com/mitsumori-pdf/">見積書</a> ・ <a href="https://www.reveriel.com/ryoshusho-pdf/">領収書</a> ・ <a href="https://www.reveriel.com/chumonsho-pdf/">注文書</a> ・ <a href="https://www.reveriel.com/hanko-generator/">判子・印鑑</a></p>
+  </div>
+</footer>
+
+<!-- フィードバックFAB（右下固定・常時表示） -->
+<a href="https://docs.google.com/forms/d/e/1FAIpQLSfHGUfgAlViT3TFiVtJi_EpJ4ioUpd9oGyaJ7rehEV-gBH_PA/viewform?usp=pp_url&amp;entry.1745177199=%E7%B4%8D%E5%93%81%E6%9B%B8" target="_blank" rel="noopener" class="feedback-fab" aria-label="ご意見・フィードバックを送る">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+  <span>ご意見・フィードバック</span>
+</a>
+</body>
+</html>
