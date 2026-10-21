@@ -40,12 +40,41 @@
     return '¥' + comma(n);
   }
 
-  // "2026-10-11" → "2026年10月11日"
-  function formatDate(iso) {
+  // "2026-10-11" → "2026年10月11日" / 和暦なら "令和8年10月11日"
+  var ERA_STARTS = [
+    { name: '令和', y: 2019, m: 5,  d: 1 },
+    { name: '平成', y: 1989, m: 1,  d: 8 },
+    { name: '昭和', y: 1926, m: 12, d: 25 },
+    { name: '大正', y: 1912, m: 7,  d: 30 },
+    { name: '明治', y: 1868, m: 1,  d: 25 }
+  ];
+
+  // 西暦 → 和暦。該当する元号がなければ null
+  function toWareki(y, m, d) {
+    var val = y * 10000 + m * 100 + d;
+    for (var i = 0; i < ERA_STARTS.length; i++) {
+      var e = ERA_STARTS[i];
+      var start = e.y * 10000 + e.m * 100 + e.d;
+      if (val >= start) {
+        var n = y - e.y + 1;
+        return e.name + (n === 1 ? '元年' : n + '年') + m + '月' + d + '日';
+      }
+    }
+    return null;
+  }
+
+  function formatDate(iso, eraMode) {
     if (!iso) return '';
     var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso);
     if (!m) return iso;
-    return Number(m[1]) + '年' + Number(m[2]) + '月' + Number(m[3]) + '日';
+    var y = Number(m[1]);
+    var mo = Number(m[2]);
+    var d = Number(m[3]);
+    if (eraMode === 'wareki') {
+      var w = toWareki(y, mo, d);
+      if (w) return w;
+    }
+    return y + '年' + mo + '月' + d + '日';
   }
 
   // 数量は小数第2位まで、整数ならそのまま
@@ -72,6 +101,16 @@
 
   var rowSeq = 0;
   var rows = []; // { id, name, qty, unit, price }
+
+  // 書式（字体・太字・日付）の状態。
+  // fontChosen: ユーザーが字体を選び直すまでは紙面の既定フォント（従来の見た目）を保つ
+  var fontChosen = false;
+
+  var FORMAT_DEFAULTS = {
+    docFont: 'gothic',
+    docWeight: 'normal',
+    dateEra: 'seireki'
+  };
 
   var DEFAULTS = {
     issuerName: '山田 太郎 / Yamada Design',
@@ -209,7 +248,43 @@
     el.textContent = text;
   }
 
+  /* --- 書式設定 --- */
+
+  function checkedValue(name, fallback) {
+    var el = document.querySelector('input[name="' + name + '"]:checked');
+    return el ? el.value : fallback;
+  }
+
+  function currentFormat() {
+    return {
+      font: checkedValue('docFont', FORMAT_DEFAULTS.docFont),
+      weight: checkedValue('docWeight', FORMAT_DEFAULTS.docWeight),
+      era: checkedValue('dateEra', FORMAT_DEFAULTS.dateEra)
+    };
+  }
+
+  function setRadioValue(name, value) {
+    var els = document.querySelectorAll('input[name="' + name + '"]');
+    for (var i = 0; i < els.length; i++) {
+      els[i].checked = els[i].value === value;
+    }
+  }
+
+  function applyFormat(fmt) {
+    var paper = $('paper');
+    if (!paper) return;
+
+    var isMincho = fmt.font === 'mincho';
+    paper.classList.toggle('font-mincho', isMincho);
+    paper.classList.toggle('font-gothic', !isMincho && fontChosen);
+    paper.classList.toggle('weight-bold', fmt.weight === 'bold');
+  }
+
   function renderPreview() {
+    /* --- 書式（字体・太字・日付） --- */
+    var fmt = currentFormat();
+    applyFormat(fmt);
+
     /* --- 納品元 --- */
     var issuerName = $('issuerName').value.trim();
     $('pvIssuerName').innerHTML = issuerName
@@ -236,13 +311,13 @@
     /* --- 発行日・納品日・納品書番号 --- */
     var dateISO = $('issueDate').value;
     $('pvDate').innerHTML = dateISO
-      ? escapeHtml(formatDate(dateISO))
+      ? escapeHtml(formatDate(dateISO, fmt.era))
       : placeholder('未入力');
 
     var deliveryISO = $('deliveryDate').value;
     $('pvDeliveryLine').hidden = !deliveryISO;
     $('pvDelivery').innerHTML = deliveryISO
-      ? escapeHtml(formatDate(deliveryISO))
+      ? escapeHtml(formatDate(deliveryISO, fmt.era))
       : '';
 
     var docNo = $('docNo').value.trim();
@@ -381,6 +456,12 @@
     $('taxRate').value = DEFAULTS.taxRate;
     $('issueDate').value = todayISO();
     $('deliveryDate').value = todayISO();
+
+    // 書式は既定（ゴシック体・通常・西暦）に戻し、紙面は従来の見た目に戻す
+    setRadioValue('docFont', FORMAT_DEFAULTS.docFont);
+    setRadioValue('docWeight', FORMAT_DEFAULTS.docWeight);
+    setRadioValue('dateEra', FORMAT_DEFAULTS.dateEra);
+    fontChosen = false;
   }
 
   function resetForm() {
@@ -408,6 +489,15 @@
       if (event.target.closest('.row')) return;
       renderPreview();
     });
+
+    // 字体を選び直した時点で初めて紙面のフォント class を適用する
+    // （初期状態では class なし＝従来と同じフォント継承を保つ）
+    Array.prototype.forEach.call(
+      document.querySelectorAll('input[name="docFont"]'),
+      function (el) {
+        el.addEventListener('change', function () { fontChosen = true; });
+      }
+    );
 
     var rowsContainer = $('rowsContainer');
     rowsContainer.addEventListener('input', handleRowInput);

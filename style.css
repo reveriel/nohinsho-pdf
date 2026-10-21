@@ -245,6 +245,61 @@ body {
   .grid-2 { grid-template-columns: 1fr; gap: 0; }
 }
 
+/* 書式（字体・太字・日付）のセグメント風ラジオ */
+.seg-field { margin-bottom: 14px; }
+.seg-field:last-of-type { margin-bottom: 10px; }
+
+.seg-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--c-text-muted);
+  margin-bottom: 5px;
+}
+
+.seg-group { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.seg { position: relative; display: inline-flex; }
+
+.seg input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.seg span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 92px;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--c-text-muted);
+  background: var(--c-surface-2);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background-color .15s, border-color .15s, color .15s;
+}
+
+.seg:hover span { border-color: var(--c-border-strong); color: var(--c-text); }
+
+.seg input:checked + span {
+  background: var(--c-accent-soft);
+  border-color: var(--c-accent);
+  color: var(--c-accent);
+  font-weight: 600;
+}
+
+.seg input:focus-visible + span {
+  outline: 2px solid var(--c-focus);
+  outline-offset: 2px;
+}
+
 input[type="text"],
 input[type="date"],
 select,
@@ -366,9 +421,28 @@ input:focus, select:focus, textarea:focus {
   border: 1px solid var(--c-border);
   border-radius: 4px;
   box-shadow: var(--shadow-lg);
+  font-family: var(--doc-font, inherit);
   font-size: 12.5px;
   line-height: 1.65;
 }
+
+/* 書式設定: 字体（明朝 / ゴシック）
+   既定は class なし＝従来どおり本文のフォントを継承する */
+.paper.font-mincho {
+  --doc-font: "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+}
+.paper.font-gothic {
+  --doc-font: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP", sans-serif;
+}
+
+/* 書式設定: 太字（通常 400 / 太字 700）
+   .paper の font-weight を継承させたうえで、細字指定の主要項目も 700 に揃える */
+.paper.weight-bold { font-weight: 700; }
+.paper.weight-bold .doc-meta-line > span:last-child,
+.paper.weight-bold .honorific,
+.paper.weight-bold .total-label,
+.paper.weight-bold .items-table thead th,
+.paper.weight-bold .foot-title { font-weight: 700; }
 
 /* 書類タイトル */
 .doc-title {
