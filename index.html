@@ -237,6 +237,7 @@
           <span class="c-qty">数量</span>
           <span class="c-unit">単位</span>
           <span class="c-price">単価</span>
+          <span class="c-rate">税率</span>
           <span class="c-del"></span>
         </div>
 
@@ -255,13 +256,13 @@
         <legend>消費税</legend>
 
         <div class="field">
-          <label for="taxRate">消費税率</label>
+          <label for="taxRate">既定の消費税率</label>
           <select id="taxRate" name="taxRate">
             <option value="10" selected>10%（標準税率）</option>
             <option value="8">8%（軽減税率）</option>
           </select>
         </div>
-        <p class="help">納品全体に適用する税率です。軽減税率の対象となる取引では 8% を選択してください。</p>
+        <p class="help">新しく追加する明細行の税率です。行ごとに 10% / 8% を切り替えられるため、軽減税率の品目が混在する納品書もそのまま作成できます。</p>
       </fieldset>
 
       <fieldset class="card">
@@ -381,6 +382,7 @@
               <span id="pvTaxLabel">消費税（10%）</span>
               <span class="num" id="pvTaxTotal">¥0</span>
             </div>
+            <p class="tax-break" id="pvTaxBreak" hidden></p>
             <div class="sum-row sum-grand">
               <span>合計</span>
               <span class="num" id="pvGrand">¥0</span>
@@ -468,7 +470,7 @@
       <li>納品先（会社名・敬称・ご担当者・住所）を入力します。</li>
       <li>発行日・納品日・納品書番号を入力します。</li>
       <li>明細行（品名・数量・単位・単価）を入力します。行の追加・削除は自由にできます。「＋ 明細行を追加」ボタンで行を増やせます。</li>
-      <li>消費税率（10% / 8%）と備考を入力すると、右のプレビューと合計金額が自動で更新されます。</li>
+      <li>明細行ごとに税率（10% / 8%）を選べます。混在する場合は税率ごとの小計と税額が自動で分かれます。</li>
       <li>「印刷 / PDF保存」ボタンを押し、印刷先で「PDF に保存」を選ぶと PDF ファイルとして保存できます。</li>
     </ol>
 

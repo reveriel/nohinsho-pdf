@@ -342,7 +342,7 @@ input:focus, select:focus, textarea:focus {
 .rows-head,
 .row {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 62px 58px 104px 30px;
+  grid-template-columns: minmax(0, 1fr) 56px 52px 96px 58px 30px;
   gap: 7px;
   align-items: center;
 }
@@ -353,7 +353,7 @@ input:focus, select:focus, textarea:focus {
 
 @media (max-width: 560px) {
   .rows-head,
-  .row { grid-template-columns: minmax(0, 1fr) 42px 42px 80px 28px; gap: 4px; }
+  .row { grid-template-columns: minmax(0, 1fr) 40px 40px 74px 54px 26px; gap: 4px; }
   .row input { padding: 6px 6px; font-size: 12.5px; }
   .rows-head { font-size: 10px; }
 }
@@ -998,4 +998,21 @@ input:focus, select:focus, textarea:focus {
 /* ===== モバイル：入力欄のフォントを16pxに（iOSの自動ズーム防止） ===== */
 @media (max-width: 720px) {
   input, select, textarea { font-size: 16px !important; }
+}
+
+/* ===== 行ごとの税率 ===== */
+.i-rate {
+  width: 100%;
+  padding: 7px 4px;
+  font-size: 12.5px;
+  color: var(--c-text);
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: 6px;
+}
+.tax-break {
+  margin: 4px 0 0;
+  font-size: 11.5px;
+  line-height: 1.6;
+  color: var(--c-text-muted);
 }
